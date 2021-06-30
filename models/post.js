@@ -25,8 +25,11 @@ Post.init (
                 key: 'id',
             }
       },
+    },
+{
       sequelize,
-      timestamps: true,
+    //   timestamps: true,
+      modelName: 'post',
     }
 );
 
