@@ -1,4 +1,4 @@
-const loginFormHandler = async (event) => {
+const loginForm = async (event) => {
     event.preventDefault();
   
     const email = document.querySelector('#email-login').value.trim();
@@ -19,7 +19,7 @@ const loginFormHandler = async (event) => {
     }
   };
   
-  const signupFormHandler = async (event) => {
+  const signupForm = async (event) => {
     event.preventDefault();
   
     const name = document.querySelector('#name-signup').value.trim();
@@ -34,7 +34,7 @@ const loginFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/profile');
+        document.location.replace('/');
       } else {
         alert('Sign up failed');
       }

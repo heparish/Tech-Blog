@@ -1,17 +1,17 @@
 const editPost = async (event) => {
     event.preventDefault();
 
-    const content = document.querySelector('#postContent').value.trim();
+    const body = document.querySelector('#postBody').value.trim();
     const title = document.querySelector('#title').value.trim();
     var post_id = window.location.pathname.split('/')[3];
 
 
-    console.log(content)
+    console.log(body)
     console.log(title)
-    if (content && title) {
+    if (body && title) {
         const response = await fetch(`/api/posts/${post_id}`, {
             method: 'PUT',
-            body: JSON.stringify({content, title, post_id}),
+            body: JSON.stringify({body, title, post_id}),
             headers: {
                 'Content-Type': 'application/json',
             },

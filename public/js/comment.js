@@ -1,26 +1,62 @@
-const newCommentHandler = async (event) => {
+const formSelector = document.querySelector('.comment');
+
+const newComment = async (event) => {
     event.preventDefault();
 
-    const content = document.querySelector('#commentHole').value;
-	const bpIdent = document.querySelector('#bpId').textContent;
+   const content = document.querySelector('#comment-box').value.trim();
+   //gets the post id from the pathname by spliting it on every /
+   var post_id = window.location.pathname.split('/')[2];
 
-    const response = await fetch('/api/comment', {
-        method: 'POST',
-        body: JSON.stringify({
-			content,
-        	bpIdent,
-        }),
-        headers: { 'Content-Type': 'application/json' },
-      });
 
-    if (response.ok) {
-		document.location.replace('/');
-    } else {
-        alert('Failed to create comment');
+    if (content) {
+        const response = await fetch(`/api/comments`, {
+            method: 'POST',
+            body: JSON.stringify({body, post_id}),
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+
+        if (response.ok) {
+            document.location.replace(`/post/${post_id}`);
+        } else {
+            alert('Failed to create post!')
+        }
+
     }
+}
 
-};
+const createTextBox = () => {
+    const div = document.createElement('div');
+    div.setAttribute('class','form-group');
 
-document
-  .querySelector('.new-comment-form')
-  .addEventListener('submit', newCommentHandler);
+    formSelector.appendChild(div)
+
+    const commentBox = document.createElement('textarea');
+    commentBox.setAttribute('class','form-control');
+    commentBox.setAttribute('id','comment-box');
+    commentBox.setAttribute('rows','2');
+
+    div.appendChild(commentBox);
+
+    const div2 = document.createElement('div');
+    div2.setAttribute('class','form-group');
+
+    formSelector.appendChild(div2)
+
+    const submitBtn = document.createElement('button');
+    submitBtn.setAttribute('type','submit');
+    submitBtn.setAttribute('id','submit-comment');
+    submitBtn.textContent = "Submit";
+
+    div2.appendChild(submitBtn);
+
+
+
+}
+
+
+
+document.querySelector('#newComment').addEventListener('click',createTextBox)
+
+document.querySelector('.comment').addEventListener('submit',newComment)

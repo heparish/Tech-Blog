@@ -16,7 +16,7 @@ router.get('/', async (req,res) => {
 // GET individual post
 router.get('/:id', async (req, res) => {
 	try {
-	const postData = await Blogpost.findByPk(req.params.id, {
+	const postData = await Post.findByPk(req.params.id, {
 		include: [{ model: User }, { model: Comment }]
 
 	});
@@ -39,7 +39,7 @@ router.post('/', async (req, res) => {
 	try {
 	const postData = await Post.create({
 		post_title: req.body.post_title,
-		content: req.body.content,
+		body: req.body.body,
 		user_id: req.session.user_id, 
 	});
 	
@@ -55,7 +55,7 @@ router.put('/:id', async (req, res) => {
 		const postData = await Post.update(
 			{
 				post_title: req.body.post_title,
-				content: req.body.content,
+				body: req.body.body,
 				user_id: req.session.user_id,
 			},
 			{
