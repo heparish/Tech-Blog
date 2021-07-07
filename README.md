@@ -1,14 +1,37 @@
 # Tech-Blog
 
-start writing how page hsould look in homepage
-then once do routes in get on resoonse do res.render(<parameter>homepage)
-dont have to do fetch in js
-work on auth (this is when hooks go back in)
-seterate in post comment and user routes and log in and log out in user
-need to render homepage 
-homeroutes start with homepage res.render and see if dashboard nneds to be rinderd
-rediredted to login from dash if not logged in
-once auth is done then start creating routes for posts (posts first), vreate reneder on dashboard (only urs), abnilty ro create new, and edit(try to keep edit in same page easier)
-then comments basiclly same add edit and delete if time
+## Description 
 
-TEST EVERY STEP OF THE WAY
+This is a blog application where users can create an account, write posts, edit them, and comment on other users posts. One is only able to post or comment in they have signed up for an account and are logged in.
+
+## Contents
+* [Installation](#Installation)
+* [Screenshots](#Screenshots)
+* [Questions](#Questions)
+* [Credits](#Credits)
+
+## Installation
+
+* Clone to repo to your local device.
+* Have node installed
+* Run 'npm init'
+* Run 'npm install'
+* Create the DB in mySQL.
+* Run 'node seeds/index.js' 
+* Run 'node server.js' to start the server.
+Be sure to enter your mysql username and password in the .env file.
+
+You can also very the live Heroku app here.
+
+## Screenshots
+
+
+
+## Questions
+
+Have a question? Contact me on github @heparish 
+
+## Credits
+
+* My amazing tutor Sara, who saves my butt every session. 
+* Project created by Haley Parish and her feline desk mate, Charlie.
