@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { User, Post, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// GET all comments
+// GET all comments test
 router.get('/', async (req,res) => {
 	try {
 		const commentData = await Comment.findAll( { include: [ {model: User}, {model: Post} ] } );
@@ -29,26 +29,26 @@ router.post('/', withAuth, async (req, res) => {
   });
 
 // update comment
-router.put('/:id', async (req, res) => {
-	try {
-		const commentData = await Comment.update(
-			{
-				body: req.body.body,
-				user_id: req.body.user_id,
-				post_id: req.body.post_id,
-			},
-			{
-			where: {
-				id: req.params.id,
-			},
-		}
-	);
+// router.put('/:id', async (req, res) => {
+// 	try {
+// 		const commentData = await Comment.update(
+// 			{
+// 				body: req.body.body,
+// 				user_id: req.body.user_id,
+// 				post_id: req.body.post_id,
+// 			},
+// 			{
+// 			where: {
+// 				id: req.params.id,
+// 			},
+// 		}
+// 	);
 
-	res.status(200).json(commentData);
+// 	res.status(200).json(commentData);
 
-	} catch (err) {
-		res.status(500).json(err);
-	}
-});
+// 	} catch (err) {
+// 		res.status(500).json(err);
+// 	}
+// });
 
 module.exports = router;

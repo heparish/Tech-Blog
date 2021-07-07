@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { User, Post, Comment } = require('../../models');
 
-// GET all users
+// GET all users test
 router.get('/', async (req,res) => {
 	try {
 		const userData = await User.findAll( { include: [ {model: Post}, {model: Comment} ] } );
@@ -13,7 +13,7 @@ router.get('/', async (req,res) => {
 	}
 });
 
-// CREATE new user: 'api/users'
+// CREATE new user
 router.post('/', async (req, res) => {
 	try {
 		const dbUserData = await User.create({
