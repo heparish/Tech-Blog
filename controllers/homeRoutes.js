@@ -12,16 +12,16 @@ router.get('/', async (req, res) => {
                 }
             ],
         });
-        // console.log("Before serialized" + postData); 
+
 
         const posts = postData.map((post) => post.get({ plain:true }));
 
-        // console.log("After serialized" + posts); 
+        // console.log(posts); 
 
         res.render('homepage', {
             posts,
             logged_in: req.session.logged_in,
-            user_id: req.session.user_id,
+            // user_id: req.session.user_id,
         });
     } catch (err) {
         res.status(500).json(err);
