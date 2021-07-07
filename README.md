@@ -21,7 +21,7 @@ This is a blog application where users can create an account, write posts, edit 
 * Run 'node server.js' to start the server.
 Be sure to enter your mysql username and password in the .env file.
 
-You can also very the live Heroku app here.
+You can also very the live Heroku app [here](#https://tech-blog-hp.herokuapp.com/).
 
 ## Screenshots
 
