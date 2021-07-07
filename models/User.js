@@ -35,7 +35,6 @@ User.init(
         return newUserData;
       },
     },
-    
     },
     {
     sequelize,
@@ -47,3 +46,4 @@ User.init(
 );
 
 module.exports = User;
+ 

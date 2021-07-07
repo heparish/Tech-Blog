@@ -3,7 +3,7 @@ const expresSession= require("express-session")
 const exphbs =require("express-handlebars")
 const sequelize= require("./config/connection")
 const app= express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3001;
 // Parse request body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

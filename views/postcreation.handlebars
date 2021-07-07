@@ -1,14 +1,16 @@
-<form class="create-post">
-  <div class="form-group">
-    <label for="title">Write all your thoughts and feelings below:</label>
-    <input id="title" class="form-control" type="text">
-  </div>
-  <div class="form-group">
-    <textarea class="form-control" id="postContent" rows="3" placeholder="Start writing here"></textarea>
-  </div>
-  <div class="form-group">
-  <button id="submitPost" type="submit" class="btn btn-info mb-2">Submit Post</button>
-  </div>
-</form>
+<div class="create-post-container">
+  <h3 class="new-post">Create your new post below</h3>
+  <form class="create-post">
+    <div class="form-group">
+      <input id="title" class="form-control" type="text" placeholder="Title">
+    </div>
+    <div class="form-group">
+      <textarea class="form-control" id="postContent" rows="10" placeholder="Create your new post below"></textarea>
+    </div>
+    <div class="form-group">
+    <button id="submitPost" type="submit" class="btn btn-light mb-2">Submit Post</button>
+    </div>
+  </form>
+</div>
 
 <script src="/js/createpost.js"></script>
