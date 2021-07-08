@@ -4,7 +4,7 @@ const submitPost = async (event) => {
     const body = document.querySelector('#postbody').value.trim();
     const title = document.querySelector('#title').value.trim();
     const user_id = window.location.pathname.split('/')[4];
-    const url = `/api/posts/new/${user_id}`;
+    const url = `/api/post/new/${user_id}`;
 
     if (body && title) {
         const response = await fetch(url, {

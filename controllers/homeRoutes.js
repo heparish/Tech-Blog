@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
   
       console.log(posts)
   
-      res.render('blogPosts', { 
+      res.render('posts', { 
         posts, 
         logged_in: req.session.logged_in 
       });

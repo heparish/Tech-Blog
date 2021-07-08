@@ -9,7 +9,7 @@ const editPost = async (event) => {
     console.log(body)
     console.log(title)
     if (body && title) {
-        const response = await fetch(`/api/posts/${post_id}`, {
+        const response = await fetch(`/api/post/${post_id}`, {
             method: 'PUT',
             body: JSON.stringify({body, title, post_id}),
             headers: {
