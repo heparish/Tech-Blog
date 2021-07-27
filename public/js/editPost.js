@@ -1,30 +1,30 @@
-const editPost = async (event) => {
-    event.preventDefault();
+// edit post handler
+const editHandler = async (event) => {
+	event.preventDefault();
 
-    const body = document.querySelector('#postBody').value.trim();
-    const title = document.querySelector('#title').value.trim();
-    var post_id = window.location.pathname.split('/')[3];
+	const pUpIdent = document.querySelector('#pUpId').textContent;
+	const post_title = document.querySelector('#post_title').value;
+	const content = document.querySelector('#content').value;
+	
+	const response = await fetch(`/api/postRoutes/${pUpIdent}`, {
+		method: 'PUT',
+		body: JSON.stringify({
+		post_title,
+		content,
+		}),
+		headers: {
+		'Content-Type': 'application/json',
+		},
+	});
 
+	if (response.ok) {
+		document.location.replace('/');
+	} else {
+		alert('Failed to update post');
+	}
+  
+};
 
-    console.log(body)
-    console.log(title)
-    if (body && title) {
-        const response = await fetch(`/api/post/${post_id}`, {
-            method: 'PUT',
-            body: JSON.stringify({body, title, post_id}),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            
-        });
-
-        if (response.ok) {
-            document.location.replace('/');
-        } else {
-            alert('Bummer we couldn`t get that to work, try again.')
-        }
-    }
-    
-}
- 
-document.querySelector('.edit-post').addEventListener('submit',editPost);
+document
+	.querySelector('.update-form')
+	.addEventListener('submit', editHandler);

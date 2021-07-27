@@ -1,40 +1,44 @@
-{{!-- used classwork as template --}}
-<div class="login-container">
-    <div class="login-form login">
-        <form>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password">
-            </div>
-            <button type="submit" class="btn btn-info">Login</button>
-        </form>
-    </div>
-    <div class="sign-up">
-        <form class="login-form sign-up">
-            <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" aria-describedby="name">
-            </div>
+<div class="row justify-space-between-md">
 
-            <div class="mb-3">
-                <label for="email-signup" class="form-label">Email address:</label>
-                <input type="email" class="form-control" id="email-signup" aria-describedby="email">
-                <div id="emailHelp" class="form-text">Your email will not be shared with anyone</div>
+    <div class="login-card">
+        <h2 class="page-title">Login</h2>
+        <form class="form login-form">
+            <div class="form-group">
+                <label for="email-login">Email:</label>
+                <input class="form-input" type="text" id="email-login" />
             </div>
-            <div class="mb-3">
-                    <label for="password-signup" class="form-label">Password:</label>
-                    <input type="password" id="password-signup" class="form-control" aria-describedby="passwordHelpBlock">
-                    <div id="passwordHelpBlock" class="form-text">
-                    Your password must be at least 8 characters long.
-                    </div>      
+            <div class="form-group">
+                <label for="password-login">Password:</label>
+                <input class="form-input" type="password" id="password-login" />
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">login</button>
+            </div>
         </form>
     </div>
+    
+    <div class="login-card">
+        <h2 class="page-title">Signup</h2>
+        <form class="form signup-form">
+            <div class="form-group">
+                <label for="username-signup">Username:</label>
+                <input class="form-input" type="text" id="username-signup" />
+            </div>
+            <div class="form-group">
+                <label for="email-signup">Email:</label>
+                <input class="form-input" type="text" id="email-signup" />
+            </div>
+            <div class="form-group">
+                <label for="password-signup">Password:</label>
+                <input class="form-input" type="password" id="password-signup" />
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">signup</button>
+            </div>
+        </form>
+    </div>
+	
 </div>
 
-<script src="/js/login.js"></script>
+
+<script src="./js/login.js"></script>

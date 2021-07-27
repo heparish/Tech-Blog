@@ -1,115 +1,81 @@
-button {
-    font-size: 5%;
-}
 
-main {
-    padding: 5%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+#blogPostMain {
+	margin-top: 1rem;
 }
 
 a {
-    text-decoration: none;
+	text-decoration: none;
 }
 
-.card-group {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
+#commentForm {
+	margin-top: 5rem;
 }
 
-#all-posts .card {
-    border: 2px solid orange;
+#commentButt {
+	margin-bottom: 5px;
 }
 
-/* homepage and posts */
-.post {
-    width: 85%;
+#recentCommentContainer {
+	margin-top: 5rem;
 }
 
-.indivPost, .indivPost .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    margin: 2%;
+.commentHead h4 {
+	color: #e07a5f;
+	font-size: 14px;
 }
 
-.create-btn-div {
-    display: flex;
-    align-items: center;
+.commentHead h4,
+.commentHead h5 {
+    margin:0px;
+    display: inline-block;
+    vertical-align: top;
+    line-height: 21px;
 }
 
-#create {
-    align-self: flex-start;
-    margin: 3%;
+.commentHead h5{
+	text-align:right;
+	padding-right:2em;
+	font-size: 12px;
+}
+#commentCard {
+	height: 150px;
+	margin: .25rem;
 }
 
-.comment {
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
+#profPicCont {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-.display-comment {
-    display: flex;
-    justify-content: space-between;
+#commentContent {
+    font-size: 16px;
 }
 
-/* **dash** */
-.dashboard {
-    display: flex;
-    justify-content: space-between;
-
+#createHead {
+	font-size: 1rem;
+	color:#717175;
 }
 
-.dashboard-header {
-    align-self: center;
-    padding-bottom: 3%;
+a,
+.nav-link {
+	color: #3d405b;
 }
 
-.your-posts-header {
-    padding-bottom: 2%;
+a:hover,
+.nav-link:hover {
+	color: #81b29a;
 }
 
-.user-posts {
-    width: 85%;
-    padding-left: 3%;
+.profPic {
+	height: 146px;
+	width: 90px;
+	border-radius: 5px;
+	padding-top: .6rem;
+	padding-bottom: .5rem;
+	object-fit: cover;
 }
 
-.user-posts-header {
-    display: flex;
-    justify-content: space-between;
-}
-
-/* **post creation** */
-
-.create-post-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.new-post {
-    margin-bottom: 2.5%;
-}
-
-#submitPost {
-    margin-top: 3%;
-}
-
-/* **login** */
-.login-container{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: flex-start;
-}
-
-.login-form {
-    width: 15rem;
+#navTitle {
+	font-size: 2rem;
 }

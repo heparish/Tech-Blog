@@ -1,10 +1,19 @@
-<h1 class="dashboard-header">{{user.name}}'s For You Page</h1>
-<div class="dashboard">
-    <a href="/api/post/new/{{user.id}}"><button type="button" id="create" class="btn btn-info btn-lg">Create new post</button></a>
-    <div class="containter user-posts">
-        <h3>Your Posts</h3>
-        {{#each user.posts as |post|}}
-        {{> user-posts}}
-        {{/each}}
+<div class="menu-container">
+    <div class="card-header col-md-12 text-center">
+        <h2>Dashboard</h2>
     </div>
+
+    {{#each opinions as |opinions|}}
+	<div class="card" id="postDataMain">
+		<div class="card-body">
+			<h2 class="card-title"><a href="/opinions/{{id}}">{{ opinions.post_title }}</a></h2>
+			<p class="card-text">{{opinions.content}}</p>
+			<a href="/opinions/{{id}}" class="btn btn-secondary btn-sm">continue reading . . .</a>
+		</div>
+		<div class="card-header">
+    		by: {{ opinions.user.username }}
+  		</div>
+	</div>
+    {{/each}}
+
 </div>

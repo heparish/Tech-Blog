@@ -42,7 +42,7 @@ router.post('/', async (req, res) => {
 	try {
 	const postData = await Post.create({
 		post_title: req.body.post_title,
-		body: req.body.body,
+		content: req.body.content,
 		user_id: req.session.user_id, 
 	});
 	
@@ -58,7 +58,7 @@ router.put('/:id', async (req, res) => {
 		const postData = await Post.update(
 			{
 				post_title: req.body.post_title,
-				body: req.body.body,
+				content: req.body.content,
 				user_id: req.session.user_id,
 			},
 			{
