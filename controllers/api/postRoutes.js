@@ -38,7 +38,7 @@ router.get('/:id', withAuth, async (req, res) => {
 
 // route to create a post
 router.post('/', async (req, res) => {
-	console.log('you are in teh blog posting route')
+	console.log('you are in tech blog posting route')
 	try {
 	const postData = await Post.create({
 		post_title: req.body.post_title,

@@ -1,5 +1,5 @@
 
-#blogPostMain {
+#blogDataMain {
 	margin-top: 1rem;
 }
 
@@ -42,12 +42,6 @@ a {
 	margin: .25rem;
 }
 
-#profPicCont {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
 #commentContent {
     font-size: 16px;
 }
@@ -65,15 +59,6 @@ a,
 a:hover,
 .nav-link:hover {
 	color: #81b29a;
-}
-
-.profPic {
-	height: 146px;
-	width: 90px;
-	border-radius: 5px;
-	padding-top: .6rem;
-	padding-bottom: .5rem;
-	object-fit: cover;
 }
 
 #navTitle {

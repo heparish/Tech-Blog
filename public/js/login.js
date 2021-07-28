@@ -10,12 +10,6 @@ const loginForm = async (event) => {
         body: JSON.stringify({ email, password }),
         headers: { 'Content-Type': 'application/json' },
       });
-  
-      if (response.ok) {
-        document.location.replace('/profile');
-      } else {
-        alert(response.statusText);
-      }
     }
   };
   

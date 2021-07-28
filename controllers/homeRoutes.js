@@ -9,7 +9,8 @@ router.get('/', async (req, res) => {
       const postData = await Post.findAll({
         include: [
           {
-            model: User
+            model: User,
+            attributes: ['name']
           },
         ],
       });
@@ -18,7 +19,7 @@ router.get('/', async (req, res) => {
   
       console.log(posts)
   
-      res.render('posts', { 
+      res.render('all', { 
         posts, 
         logged_in: req.session.logged_in 
       });
@@ -28,30 +29,52 @@ router.get('/', async (req, res) => {
   });
   
   
-  router.get('/post/:id', async (req, res) => {
+router.get('/post/:id', async (req, res) => {
     try {
-      const postData = await Post.findByPk(req.params.id, {
-        include: [
-          User,
-          {
-              model: Comment,
-              include: [User],
-          },
-      ],
-  })
+      const postData = await Post.findByPk(req.params.id, { include: { all: true, nested: true }});
   
       const post = postData.get({ plain: true });
+    
+      res.render('post', { ...post, logged_in: req.session.logged_in });
   
-      res.render('aPost', {
-        post,
+    } catch (err) {
+      res.status(500).json(err);
+  	}
+  });
+
+  router.get('/posteditor/:id', async (req, res) => {
+    try {
+    const postData = await Post.findByPk(req.params.id, { include: { all: true, nested: true }});
+      const post = postData.get({ plain: true });
+    
+      res.render('posteditor', { ...post, logged_in: req.session.logged_in });
+  
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
+
+  router.get('/postcreation', withAuth, async (req, res) => {
+    try { // Find the logged in user based on the session ID
+      const userData = await User.findByPk(req.session.user_id, {
+        attributes: { exclude: ['password'] },
+        include: [{ model: Post }],
       });
+  
+        const user = userData.get({ plain: true });
+  
+      res.render('postcreation', {
+        ...user,
+        logged_in: true
+      });
+  
     } catch (err) {
       res.status(500).json(err);
     }
   });
   
-  
-  router.get('/login', (req, res) => {
+
+router.get('/login', (req, res) => {
     if (req.session.logged_in ) {
         res.redirect('/');
         return;
@@ -60,7 +83,7 @@ router.get('/', async (req, res) => {
     res.render('login');
   });
   
-  router.get('/signup', (req, res) => {
+router.get('/signup', (req, res) => {
     if (req.session.logged_in ) {
         res.redirect('/');
         return;
@@ -71,4 +94,3 @@ router.get('/', async (req, res) => {
   
   
   module.exports = router;
-  
