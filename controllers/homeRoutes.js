@@ -3,15 +3,12 @@ const router = express.Router();
 const { Post, Comment, User } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     try {
       // Get all projects and JOIN with user data
       const postData = await Post.findAll({
         include: [
-          {
-            model: User,
-            attributes: ['name']
-          },
+            User,
         ],
       });
   
@@ -42,7 +39,7 @@ router.get('/post/:id', async (req, res) => {
   	}
   });
 
-  router.get('/posteditor/:id', async (req, res) => {
+  router.get('/posteditor/:id', withAuth, async (req, res) => {
     try {
     const postData = await Post.findByPk(req.params.id, { include: { all: true, nested: true }});
       const post = postData.get({ plain: true });
@@ -83,12 +80,13 @@ router.get('/post/:id', async (req, res) => {
   
   // login route. If the user is already logged in, redirect the request to another route
   router.get('/login', (req, res) => {
+    console.log("route hit")
     if (req.session.logged_in) {
         res.redirect('/');
         return;
     }
   
-    res.render('login');
+    res.json();
   });
   
  module.exports = router;
