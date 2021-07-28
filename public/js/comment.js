@@ -1,8 +1,9 @@
 const newCommentHandler = async (event) => {
+  console.log("click");
     event.preventDefault();
 
-    const content = document.querySelector('#commentHole').value;
-	const pIdent = document.querySelector('#pId').textContent;
+  const content = document.querySelector('#commentHole').value;
+	const pIdent = document.querySelector('#pId').value;
 
     const response = await fetch('/api/comment', {
         method: 'POST',

@@ -85,8 +85,16 @@ router.get('/post/:id', async (req, res) => {
         res.redirect('/');
         return;
     }
-  
-    res.json();
+   res.render('login');
   });
   
+  router.get('/signup', (req, res) => {
+    console.log("route hit signup")
+    if (req.session.logged_in) {
+        res.redirect('/');
+        return;
+    }
+   res.render('signup');
+  });
+
  module.exports = router;

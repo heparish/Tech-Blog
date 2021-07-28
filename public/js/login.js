@@ -26,6 +26,7 @@ const loginForm = async (event) => {
     const password = document.querySelector('#password-signup').value.trim();
   
     if (name && email && password) {
+      console.log(name, email, password)
       const response = await fetch('/api/user', {
         method: 'POST',
         body: JSON.stringify({ name, email, password }),
@@ -42,9 +43,9 @@ const loginForm = async (event) => {
   
   document
     .querySelector('.login-form')
-    .addEventListener('submit', loginFormHandler);
+    .addEventListener('submit', loginForm);
   
   document
     .querySelector('.signup-form')
-    .addEventListener('submit', signupFormHandler);
+    .addEventListener('submit', signupForm);
   

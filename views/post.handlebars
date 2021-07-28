@@ -1,7 +1,7 @@
 <div class="card">
 	<div class="card-body">
 		<h1 class="card-title">{{ title }}</h1>
-		<p class="card-text">{{ content }}</p>
+		<p class="card-text">{{ body }}</p>
 	</div>
 	<div class="card-header">
 		by: {{ user.name }}
@@ -16,11 +16,12 @@
 			<div class="card">
 				<div class="card-body">
 					<form class="form new-comment-form">
-
-						<div class="input-group mb-3">
-  							<input type="text" class="form-control" id="commentHole" placeholder="add a comment . . .">
+						{{!-- remove form later --}}
+						
+  							<input type="text" class="form-control" id="pId" value= "{{id}}"/>
+							  <textarea class="form-control" id="commentHole" placeholder="add a comment . . ."></textarea>
   							<button class="btn btn-outline-secondary" type="submit" id="button-addon2">comment</button>
-						</div>
+					
 					</form>
 				</div>
 			</div>
@@ -51,7 +52,7 @@
 						<div class="col-md-8">
 							<div class="commentHead card-body">
 								<h4 class="card-title">{{ user.name }}</h4>
-								<p class="card-text" id="commentContent">{{ comment.content }}</p>
+								<p class="card-text" id="commentContent">{{ comment.body }}</p>
 							</div>
 						</div>
 					</div>

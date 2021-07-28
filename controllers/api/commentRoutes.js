@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
+const withAuth = require('../../utils/auth');
 
 const { User, Post, Comment } = require('../../models');
-// const withAuth = require('../../utils/auth');
 
 // GET all comments test
-router.get('/', async (req,res) => {
+router.get('/', withAuth, async (req,res) => {
 	try {
-		const commentData = await Comment.findAll( { include: [ {model: User}, {model: Blog} ] } );
+		const commentData = await Comment.findAll( { include: [ {model: User}, {model: Post} ] } );
 
 		res.status(200).json(commentData);
 		
@@ -17,14 +17,16 @@ router.get('/', async (req,res) => {
 });
 
 // route to add comment
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
+	console.log(req.body);
     try {
       const newComment = await Comment.create({
-        content: req.body.content,
+         ...req.body,
         user_id: req.session.user_id,
       });
   
       res.status(200).json(newComment);
+	  console.log(newComment);
     } catch (err) {
       res.status(400).json(err);
     }
