@@ -16,7 +16,7 @@ const newCommentHandler = async (event) => {
     if (response.ok) {
 		document.location.replace('/');
     } else {
-        alert('Failed to maker a da commenting');
+        alert('Failed to comment');
     }
 
 };

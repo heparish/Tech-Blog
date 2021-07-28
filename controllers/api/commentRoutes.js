@@ -31,26 +31,26 @@ router.post('/', async (req, res) => {
   });
 
 // update comment
-// router.put('/:id', async (req, res) => {
-// 	try {
-// 		const commentData = await Comment.update(
-// 			{
-// 				body: req.body.body,
-// 				user_id: req.body.user_id,
-// 				post_id: req.body.post_id,
-// 			},
-// 			{
-// 			where: {
-// 				id: req.params.id,
-// 			},
-// 		}
-// 	);
+router.put('/:id', async (req, res) => {
+	try {
+		const commentData = await Comment.update(
+			{
+				body: req.body.body,
+				user_id: req.body.user_id,
+				post_id: req.body.post_id,
+			},
+			{
+			where: {
+				id: req.params.id,
+			},
+		}
+	);
 
-// 	res.status(200).json(commentData);
+	res.status(200).json(commentData);
 
-// 	} catch (err) {
-// 		res.status(500).json(err);
-// 	}
-// });
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
 
 module.exports = router;

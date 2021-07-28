@@ -6,7 +6,7 @@ const editHandler = async (event) => {
 	const post_title = document.querySelector('#post_title').value;
 	const content = document.querySelector('#content').value;
 	
-	const response = await fetch(`/api/postRoutes/${pUpIdent}`, {
+	const response = await fetch(`/api/post/${pUpIdent}`, {
 		method: 'PUT',
 		body: JSON.stringify({
 		post_title,

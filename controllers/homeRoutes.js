@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { Post, Comment, User } = require('../models');
-// const withAuth = require('../utils/auth');
+const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
     try {
@@ -54,7 +54,7 @@ router.get('/post/:id', async (req, res) => {
     }
   });
 
-  router.get('/postcreation', async (req, res) => {
+  router.get('/postcreation', withAuth, async (req, res) => {
     try { // Find the logged in user based on the session ID
       const userData = await User.findByPk(req.session.user_id, {
         attributes: { exclude: ['password'] },
@@ -74,7 +74,7 @@ router.get('/post/:id', async (req, res) => {
   });
 
   
-  router.get('/comment', async (req, res) => {
+  router.get('/comment', withAuth, async (req, res) => {
     if (req.session.logged_in) {
       return;
     }
