@@ -25,7 +25,7 @@ Post.init (
                 key: 'id',
             }
       },
-       post_title: {
+       title: {
           type: DataTypes.STRING,
           allowNull: false,
       },

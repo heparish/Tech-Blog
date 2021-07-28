@@ -1,13 +1,13 @@
 const newFormHandler = async (event) => {
     event.preventDefault();
   
-    const post_title = document.querySelector('#post_title').value;
+    const title = document.querySelector('#title').value;
     const content = document.querySelector('#content').value;
 
     const response = await fetch(`/api/gpost`, {
     	method: 'POST',
     	body: JSON.stringify({
-        	post_title,
+        	title,
         	content,
       }),
     	headers: {

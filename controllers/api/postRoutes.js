@@ -41,7 +41,7 @@ router.post('/', async (req, res) => {
 	console.log('you are in tech blog posting route')
 	try {
 	const postData = await Post.create({
-		post_title: req.body.post_title,
+		title: req.body.title,
 		content: req.body.content,
 		user_id: req.session.user_id, 
 	});
@@ -57,7 +57,7 @@ router.put('/:id', async (req, res) => {
 	try {
 		const postData = await Post.update(
 			{
-				post_title: req.body.post_title,
+				title: req.body.title,
 				content: req.body.content,
 				user_id: req.session.user_id,
 			},
