@@ -1,28 +1,29 @@
-const submitPost = async (event) => {
+const newFormHandler = async (event) => {
     event.preventDefault();
+  
+    const post_title = document.querySelector('#post_title').value;
+    const content = document.querySelector('#content').value;
 
-    const body = document.querySelector('#postbody').value.trim();
-    const title = document.querySelector('#title').value.trim();
-    const user_id = window.location.pathname.split('/')[4];
-    const url = `/api/post/new/${user_id}`;
-
-    if (body && title) {
-        const response = await fetch(url, {
-            method: 'POST',
-            body: JSON.stringify({body, title}),
-            headers: {
-                'Content-Type': 'application/json',
-            },  
-        });
-
-        if (response.ok) {
-            document.location.replace(`/dashboard/${user_id}`);
-
-        } else {
-            alert('Failed to create post :( ')
-        }
-    }
-    
+    const response = await fetch(`/api/gpost`, {
+    	method: 'POST',
+    	body: JSON.stringify({
+        	post_title,
+        	content,
+      }),
+    	headers: {
+    		'Content-Type': 'application/json',
+    	},
+    });
+  
+    if (response.ok) {
+    	document.location.replace('/');
+    } else {
+    	alert('Failed to crate post');
+	}
+	
 };
 
-document.querySelector('.create-post').addEventListener('submit',submitPost);
+  
+document
+  .querySelector('.new-post-form')
+  .addEventListener('submit', newFormHandler);

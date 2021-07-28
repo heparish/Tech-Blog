@@ -54,7 +54,7 @@ router.get('/post/:id', async (req, res) => {
     }
   });
 
-  router.get('/postcreation', withAuth, async (req, res) => {
+  router.get('/postcreation', async (req, res) => {
     try { // Find the logged in user based on the session ID
       const userData = await User.findByPk(req.session.user_id, {
         attributes: { exclude: ['password'] },
@@ -72,10 +72,18 @@ router.get('/post/:id', async (req, res) => {
       res.status(500).json(err);
     }
   });
-  
 
-router.get('/login', (req, res) => {
-    if (req.session.logged_in ) {
+  
+  router.get('/comment', async (req, res) => {
+    if (req.session.logged_in) {
+      return;
+    }
+  
+  });
+  
+  // login route. If the user is already logged in, redirect the request to another route
+  router.get('/login', (req, res) => {
+    if (req.session.logged_in) {
         res.redirect('/');
         return;
     }
@@ -83,14 +91,4 @@ router.get('/login', (req, res) => {
     res.render('login');
   });
   
-router.get('/signup', (req, res) => {
-    if (req.session.logged_in ) {
-        res.redirect('/');
-        return;
-    }
-
-    res.render('signup');
-  });
-  
-  
-  module.exports = router;
+ module.exports = router;

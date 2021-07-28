@@ -1,0 +1,63 @@
+<div class="card">
+	<div class="card-body">
+		<h1 class="card-title">{{ post_title }}</h1>
+		<p class="card-text">{{ content }}</p>
+	</div>
+	<div class="card-header">
+		by: {{ user.name }}
+	</div>
+</div>
+
+<div class="container" id="commentContainer">
+	<div class="row align-items-center">
+		<h2 id="commentForm">comment form</h2>
+
+		{{#if logged_in}}
+			<div class="card">
+				<div class="card-body">
+					<form class="form new-comment-form">
+
+						<div class="input-group mb-3">
+  							<input type="text" class="form-control" id="commentHole" placeholder="add a comment . . .">
+  							<button class="btn btn-outline-secondary" type="submit" id="button-addon2">comment</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		{{else}}
+			<div class="card">
+				<div class="card-body">
+					<form class="form new-comment-form">
+						<div class="input-group mb-3">
+  							<input type="text" class="form-control" id="commentHole" placeholder="please login to comment . . .">
+						</div>
+					</form>
+				</div>
+			</div>
+		{{/if}}
+
+	</div>
+</div>
+
+{{!-- COMMENTS --}}
+{{#if comments.length}}
+  <div class="container" id="recentCommentContainer">
+	  	<div class="row align-items-center">
+			<h2>recent comments</h2>
+
+			{{#each comments as |comment|}}
+				<div class="card mb-3" style="max-width: 550px"; id="commentCard">
+					<div class="row g-0 justify-content-start">
+						<div class="col-md-8">
+							<div class="commentHead card-body">
+								<h4 class="card-title">{{ comment.user.name }}</h4>
+								<p class="card-text" id="commentContent">{{ comment.content }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			{{/each}}
+		
+		</div>
+  </div>
+{{/if}}

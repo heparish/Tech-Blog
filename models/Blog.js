@@ -25,6 +25,10 @@ Post.init (
                 key: 'id',
             }
       },
+       post_title: {
+          type: DataTypes.STRING,
+          allowNull: false,
+      },
     },
 {
       sequelize,
