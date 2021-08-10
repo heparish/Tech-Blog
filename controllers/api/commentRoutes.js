@@ -7,8 +7,8 @@ const { User, Post, Comment } = require('../../models');
 // GET all comments test
 router.get('/', withAuth, async (req,res) => {
 	try {
-		const commentData = await Comment.findAll( { include: [ {model: User}, {model: Post} ] } );
-
+		const commentData = await Comment.findAll( { include: [User, Post ] } );
+ 		console.log(commentData, "from the GET");
 		res.status(200).json(commentData);
 		
 	} catch (err) {
@@ -21,8 +21,9 @@ router.post('/', withAuth, async (req, res) => {
 	console.log(req.body);
     try {
       const newComment = await Comment.create({
-         ...req.body,
+         body: req.body.content,
         user_id: req.session.user_id,
+		post_id: req.body.pIdent,
       });
   
       res.status(200).json(newComment);
