@@ -15,7 +15,7 @@ const newCommentHandler = async (event) => {
       });
 
     if (response.ok) {
-		document.location.replace('/');
+		console.log("comment created");
     } else {
         alert('Failed to comment');
     }
@@ -23,5 +23,5 @@ const newCommentHandler = async (event) => {
 };
 
 document
-  .querySelector('.new-comment-form')
+  .querySelector('#button-addon2')
   .addEventListener('submit', newCommentHandler);

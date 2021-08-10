@@ -5,16 +5,17 @@ const withAuth = require('../../utils/auth');
 const { User, Post, Comment } = require('../../models');
 
 // GET all comments test
-router.get('/', withAuth, async (req,res) => {
-	try {
-		const commentData = await Comment.findAll( { include: [User, Post ] } );
- 		console.log(commentData, "from the GET");
-		res.status(200).json(commentData);
+// router.get('/', withAuth, async (req,res) => {
+// 	try {
+// 		const commentData = await Comment.findAll( { include: [User, Post ] } );
+//  		console.log(comment, "from the GET");
+// 		 const comment = commentData.map((comments)=> comments.get({ plain: true}))
+// 		res.status(200).json(comment);
 		
-	} catch (err) {
-		res.status(500).json(err);
-	}
-});
+// 	} catch (err) {
+// 		res.status(500).json(err);
+// 	}
+// });
 
 // route to add comment
 router.post('/', withAuth, async (req, res) => {
